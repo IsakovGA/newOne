@@ -1,0 +1,57 @@
+<dataSource name="MySQL - pricebd@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="pricebd">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="bookmanager" />
+    <schema id="3" name="information_schema" />
+    <schema id="4" name="mysql" />
+    <schema id="5" name="new_schema" />
+    <schema id="6" name="test" />
+    <schema id="7" name="mydatabase" />
+    <table id="8" parent="1" name="cat" />
+    <table id="9" parent="1" name="prod" />
+    <column id="10" parent="8" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="11" parent="8" name="NAME">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="12" parent="8" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="13" parent="9" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="14" parent="9" name="CAT_ID">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="15" parent="9" name="NAME">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="16" parent="9" name="PRICE">
+      <mandatory>1</mandatory>
+      <data-type>decimal(16,2)|0</data-type>
+    </column>
+    <index id="17" parent="9" name="fk_PROD_CAT_idx">
+      <columns>CAT_ID</columns>
+      <desc-columns />
+    </index>
+    <key id="18" parent="9" name="PRIMARY">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="19" parent="9" name="fk_PROD_CAT">
+      <columns>CAT_ID</columns>
+      <ref-key>~.cat.PRIMARY</ref-key>
+      <cascade-update-rule>no_action</cascade-update-rule>
+      <cascade-delete-rule>no_action</cascade-delete-rule>
+    </foreign-key>
+  </database-model>
+</dataSource>
